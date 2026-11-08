@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An interactive point-cloud study from Shenzhen Living Will.">
+<title>Living Will · Point Cloud Study</title>
+<style>
+:root{color-scheme:dark;--red:#ff4b48;--line:#322222;--dim:#aaa;font:12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;background:#030303;color:#f3eeee;min-height:100svh;display:grid;grid-template-rows:minmax(260px,1fr) auto}
+footer{padding:20px clamp(14px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:14px}
+footer{border-top:1px solid var(--line);flex-wrap:wrap}
+main{position:relative;min-height:0;overflow:hidden}
+canvas,.fallback{position:absolute;inset:0;width:100%;height:100%;display:block}.fallback{object-fit:contain}canvas{touch-action:none;cursor:grab}canvas:active{cursor:grabbing}[hidden]{display:none!important}
+.anatomy-label{position:absolute;top:0;left:0;z-index:1;pointer-events:none;white-space:nowrap;padding:6px 9px;border:1px solid #692724;border-radius:3px;background:#170a0aeb;color:#ffd8d4;font:inherit}
+.anatomy-label [lang="zh-CN"]{font:300 15px/1.25 "Songti SC",SimSun,serif;letter-spacing:.035em}
+.status{position:absolute;bottom:10px;left:14px;color:var(--dim);pointer-events:none;margin:0}
+.actions{margin-left:auto}
+.controls,.actions{display:flex;gap:6px;flex-wrap:wrap}button{font:inherit;color:inherit;background:#100909;border:1px solid var(--line);border-radius:3px;padding:9px 12px;min-height:38px;cursor:pointer}
+button:hover,button[aria-pressed=true]{border-color:var(--red);color:var(--red)}button:focus-visible,canvas:focus-visible{outline:2px solid var(--red);outline-offset:-2px}button:disabled{opacity:.4;cursor:default}
+@media(max-width:650px){footer{padding-block:12px}button{padding:7px 9px}}
+</style>
+<script src="cloud.js" defer></script>
+</head>
+<body>
+<main aria-label="Interactive anatomy point cloud">
+<img class="fallback" src="reference-01.png" alt="Red anatomical point cloud on a black background">
+<canvas hidden tabindex="0" aria-label="Drag to rotate. Arrow keys rotate and plus or minus zoom."></canvas>
+<span class="anatomy-label" hidden><span lang="zh-CN"></span> · <span lang="en"></span></span>
+<p class="status" role="status">Loading point clouds…</p>
+</main>
+<footer>
+<div class="controls" role="group" aria-label="Choose model">
+<button data-model="0" aria-pressed="true" disabled>01</button><button data-model="1" aria-pressed="false" disabled>02</button><button data-model="2" aria-pressed="false" disabled>03</button>
+</div>
+<div class="actions"><button id="sound" aria-label="Ventilator" aria-pressed="false" disabled>Ventilator Off</button><button id="reset" disabled>Reset view</button></div>
+</footer>
+<audio id="breath" preload="none" loop>
+  <source src="breath.m4a" type="audio/mp4">
+  <source src="breath.mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>
