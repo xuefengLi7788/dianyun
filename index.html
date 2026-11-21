@@ -17,11 +17,12 @@ canvas,.fallback{position:absolute;inset:0;width:100%;height:100%;display:block}
 .actions{margin-left:auto}
 .controls,.actions{display:flex;gap:6px;flex-wrap:wrap}button{font:inherit;color:inherit;background:#100909;border:1px solid var(--line);border-radius:3px;padding:9px 12px;min-height:38px;cursor:pointer}
 button:hover,button[aria-pressed=true]{border-color:var(--red);color:var(--red)}button:focus-visible,canvas:focus-visible{outline:2px solid var(--red);outline-offset:-2px}button:disabled{opacity:.4;cursor:default}
-.title-bar{display:flex;align-items:center;justify-content:space-between;gap:clamp(28px,6vw,96px);padding:clamp(28px,6vw,88px);border-bottom:1px solid var(--line)}
-.title-bar h1{margin:0;max-width:9em;color:var(--red);font:700 clamp(44px,6.2vw,92px)/.94 Arial,sans-serif;letter-spacing:-.045em}
-.back-main{flex:none;color:#f3eeee;text-decoration:none;font:12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase}
+.title-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:clamp(16px,3vw,40px);padding:clamp(28px,6vw,88px);border-bottom:1px solid var(--line)}
+.title-bar h1,.back-main{font:700 clamp(44px,6.2vw,92px)/.94 Arial,sans-serif;letter-spacing:-.045em;white-space:nowrap}
+.title-bar h1{flex:none;margin:0;color:var(--red)}
+.back-main{flex:none;margin-left:auto;color:#f3eeee;text-decoration:none;text-align:right}
 .back-main:hover{color:var(--red)}
-@media(max-width:650px){footer{padding-block:12px}button{padding:7px 9px}.title-bar{align-items:flex-end;flex-wrap:wrap}.title-bar h1{font-size:clamp(36px,11vw,56px)}.back-main{margin-left:auto}}
+@media(max-width:650px){footer{padding-block:12px}button{padding:7px 9px}.title-bar{align-items:flex-end;flex-wrap:wrap}.title-bar h1,.back-main{font-size:clamp(36px,11vw,56px)}.back-main{margin-left:auto}}
 </style>
 <script src="cloud.js" defer></script>
 </head>
